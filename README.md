@@ -93,7 +93,7 @@ json
     ]
 }
 
-<img src="https://hophaven-beerlist.s3.amazonaws.com/image.jpg" alt="Brewery Image">
+
 
 **8. Monitor with AWS CloudWatch**
 - Set up monitoring to ensure your website's reliability:
