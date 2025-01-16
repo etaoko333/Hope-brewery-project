@@ -74,9 +74,24 @@ In the AWS Management Console, create a new S3 bucket (e.g., hophaven-beerlist).
 - Upload Assets:
 - Upload your static assets (images, videos, etc.) to the S3 bucket.
 - Set Permissions:
-- Ensure the bucket policy allows public read access for these assets.
+- pate this policy
+  - Ensure the bucket policy allows public read access for these assets.
 - Configure NGINX to Serve Assets from S3:
 - Update your website's HTML to reference the assets stored in S3. For example:
+Bucket Policy: Add a bucket policy to allow public read access. Here’s an example policy:
+json
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::hophaven-dev-s3-beerlist/*"
+        }
+    ]
+}
 
 <img src="https://hophaven-beerlist.s3.amazonaws.com/image.jpg" alt="Brewery Image">
 
