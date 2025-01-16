@@ -6,28 +6,27 @@
     <title>Hop Haven Craft Brewery's Dynamic Beer Selection</title>
     <style>
         body {
-        font-family: 'Arial', sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding-top: 60px; /* Added padding to push content down */
-        background-color: #f4f4f4;
-        color: #333;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding-top: 60px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
 
-    }
-
-    .navbar {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        position: fixed; /* Fix navbar to the top */
-        top: 0; /* Position at the top */
-        width: 100%; /* Full width */
-        z-index: 1000; /* Ensure it's above other content */
-    }
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
 
         .navbar a {
-            color: white;
+            color: #ecf0f1;
             margin: 0 15px;
             text-decoration: none;
             font-size: 18px;
@@ -35,6 +34,7 @@
 
         .navbar a:hover {
             text-decoration: underline;
+            color: #e74c3c; /* Change color on hover */
         }
 
         .splash-image img {
@@ -59,10 +59,13 @@
         }
 
         footer {
-            background-color: #333;
-            color: #fff;
+            background-color: #2c3e50;
+            color: #ecf0f1;
             text-align: center;
             padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
 
         .modal {
@@ -78,17 +81,17 @@
         }
 
         .modal-content {
-    background-color: #fefefe;
-    margin: 2% auto; /* Reduced top margin */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Adjust width as needed */
-    max-width: 1200px; /* Set a max-width for larger screens */
-    height: 90vh; /* Use vh unit to cover most of the viewport height */
-    overflow: auto; /* Add scroll if content is larger than the modal */
-    text-align: center;
-    position: relative; /* Position relative for absolute child positioning */
-}
+            background-color: #fff;
+            margin: 2% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 1200px;
+            height: 90vh;
+            overflow: auto;
+            text-align: center;
+            position: relative;
+        }
 
         .close {
             color: #aaa;
@@ -99,40 +102,25 @@
 
         .close:hover,
         .close:focus {
-            color: black;
+            color: #e74c3c; /* Change color on hover */
             text-decoration: none;
             cursor: pointer;
         }
 
         #beerListImage {
-    max-width: 100%; /* Ensure it is no wider than the modal */
-    max-height: 80vh; /* Adjust height to fit within the modal view */
-    margin: 0 auto; /* Center the image */
-    display: block; /* Display as block */
-}
-
-        #about-us {
-            font-size: 30px; /* Increased font size for the About Us section */
+            max-width: 100%;
+            max-height: 80vh;
+            margin: 0 auto;
+            display: block;
         }
 
-        #craft-beer-menu {
+        #about-us, #craft-beer-menu, #contact-location {
             font-size: 30px;
-        }
-
-        #contact-location {
-            font-size: 30px;
-        }
-
-        #beerListImage {
-        width: 100%; /* Increase the size of the image */
-        height: auto;
-        border-radius: 8px;
-        display: block; /* Ensures the image is a block element */
-        margin: 0 auto; /* Centers the image within the modal */
+            color: #34495e; /* Darker color for headings */
         }
 
         h2 {
-            color: #444;
+            color: #2980b9; /* Bright color for section headings */
         }
 
         p {
@@ -146,22 +134,23 @@
         }
 
         header {
-            background-color: #444;
+            background-color: #2980b9; /* Header background color */
             color: #fff;
             padding: 10px 0;
             text-align: center;
-            
-        /* Add some responsive design */
-@media screen and (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin: 5% auto;
-        height: 80vh; /* Adjust for smaller screens */
-    }
-    #beerListImage {
-        max-height: 70vh; /* Adjust for smaller screens */
-    }
-}
+        }
+
+        @media screen and (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                height: 80vh;
+            }
+
+            #beerListImage {
+                max-height: 70vh;
+            }
+        }
     </style>
 </head>
 <body>
@@ -172,12 +161,13 @@
     <nav class="navbar">
         <a href="#about-us">About Us</a>
         <a href="#craft-beer-menu">Beer List</a>
+        <a href="#contact-location">Contact</a>
     </nav>
 
     <div class="splash-image">
-        <img src="[insert s3 url]/Hop_Haven_Brewery_Entrance.jpg" alt="Hop Haven Brewery Entrance">
+        <img src="https://hophaven-dev-s3-beerlist.s3.us-west-1.amazonaws.com/Hop_Haven_Brewery_Entrance.jpg" alt="Hop Haven Brewery Entrance">
     </div>
-    
+
     <main>
         <section id="about-us">
             <h2>About Us</h2>
@@ -192,7 +182,7 @@
 
         <section id="craft-beer-menu">
             <h2>Our Current Craft Selection</h2>
-            <img src="[insert s3 url]/Clickable_Beer_List_Button.jpg" alt="Weekly craft beer list" onclick="openModal()">
+            <img src="https://hophaven-dev-s3-beerlist.s3.us-west-1.amazonaws.com/Clickable_Beer_List_Button.jpg" alt="Weekly craft beer list" onclick="openModal()">
             <p>Discover our ever-changing selection of craft beers!</p>
 
             <!-- The Modal -->
@@ -207,7 +197,7 @@
 
         <section id="contact-location">
             <h2>Contact and Location</h2>
-            <img src="[insert s3 url]/location.png" alt="Map location of Hop Haven Craft Brewery">
+            <img src="https://hophaven-dev-s3-beerlist.s3.us-west-1.amazonaws.com/location.png" alt="Map location of Hop Haven Craft Brewery">
             <p>123 Craft Beer Lane, Brewtown, USA</p>
             <p>Phone: (123) 456-7890</p>
         </section>
@@ -223,7 +213,7 @@
             var beerListImage = document.getElementById('beerListImage');
 
             // Set the URL of your S3 image
-            beerListImage.src = '[insert s3 url]/Craft_Beer_List_Menu.jpg';
+            beerListImage.src = 'https://hophaven-dev-s3-beerlist.s3.us-west-1.amazonaws.com/Craft_Beer_List_Menu.jpg';
 
             modal.style.display = 'block';
         }
@@ -242,6 +232,3 @@
     </script>
 </body>
 </html>
-
-
-
