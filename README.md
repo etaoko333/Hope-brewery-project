@@ -12,13 +12,13 @@ Inbound Rules:
 2. Connect to Your EC2 Instance
 - Using SSH: ssh -i /path/to/your-key.pem ec2-user@your-ec2-public-ip
 
-- 3. Install and Configure NGINX
-Update Packages:
+**- 3. Install and Configure NGINX**
+**Update Packages:**
 Ensure your package lists are up-to-date:
-sudo apt update
+- sudo apt update
 - Install NGINX
-Install NGINX using the apt package manager:
-sudo apt install nginx -y
+- Install NGINX using the apt package manager:
+ sudo apt install nginx -y
 - Start and Enable NGINX
 - Start the NGINX service and enable it to run on system boot:
 - sudo systemctl start nginx
@@ -34,29 +34,23 @@ sudo apt install nginx -y
 - sudo apt update
 - sudo apt install git -y
 **Clone the Repository**
-- Use the git clone command to download the repository:
--git clone https://github.com/etaoko333/Hope-brewery-project.git
+- Use the git clone command to download the repository: git clone https://github.com/etaoko333/Hope-brewery-project.git
 - This will create a folder named Hope-brewery-project in your current directory.
 - Navigate to the Project Directory
-- Edit
 - cd Hope-brewery-project
 - Set Up NGINX to Serve the Project
 -Move Files to the Web Root Directory
 - sudo mkdir -p /var/www/brewery
 - sudo cp -r * /var/www/brewery
-- Update NGINX Configuration
+- **Update NGINX Configuration**
 - Edit the default NGINX configuration or create a new file:
 - sudo vim /etc/nginx/sites-available/brewery
-Add the following configuration (modify if needed):
-
-nginx
-Copy
-Edit
+**- Add the following configuration **
 server {
     listen 80;
-    server_name brewery.com www.brewery.com;
+    server_name your_domain_or_IP;  # Replace with your domain or public IP
 
-    root /var/www/brewery;
+    root /var/www/brewery;  # Correct document root
     index index.html;
 
     location / {
@@ -69,10 +63,12 @@ Enable the site by creating a symlink:
 - sudo nginx -t
 -sudo systemctl restart nginx
   5. Deploy Your Website Content
+  **Check the NGINX Error Logs:**
+- If you continue to see errors, check the logs again for updated messages:
+- sudo tail -f /var/log/nginx/error.log
 
-- 6. Configure AWS S3 for Asset Storage
+**- 6. Configure AWS S3 for Asset Storage**
 To offload static assets to S3:
-
 **Create an S3 Bucket:**
 In the AWS Management Console, create a new S3 bucket (e.g., hophaven-beerlist).
 - Upload Assets:
